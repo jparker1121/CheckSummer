@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="253.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewController">
    <children>
-      <GridPane fx:id="gridBox" layoutX="15.0" layoutY="35.0" style="-fx-border-color: lightgrey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+      <GridPane fx:id="gridBox" layoutX="14.0" layoutY="74.0" prefHeight="200.0" prefWidth="670.0" style="-fx-border-color: lightgrey; -fx-border-radius: 10;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="85.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="437.6666564941406" minWidth="10.0" prefWidth="417.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="100.0" prefWidth="106.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="437.6666564941406" minWidth="10.0" prefWidth="432.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
@@ -32,13 +32,13 @@
                </GridPane.margin>
             </Button>
             <CheckBox fx:id="md5sumCheckBox" mnemonicParsing="false" text="Md5sum" />
-            <CheckBox fx:id="sha2sumCheckBox" mnemonicParsing="false" text="Sha1sum" GridPane.rowIndex="1" />
+            <CheckBox fx:id="sha1sumCheckBox" mnemonicParsing="false" text="Sha1sum" GridPane.rowIndex="1" />
             <CheckBox fx:id="sha256sumCheckBox" mnemonicParsing="false" text="Sha256sum" GridPane.rowIndex="2" />
             <CheckBox fx:id="sha512sumCheckBox" mnemonicParsing="false" text="Sha512sum" GridPane.rowIndex="3" />
-            <TextField fx:id="sha1TextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="sha256TextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="sha512TextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="sh1sumCopyButton" mnemonicParsing="false" onAction="#copySelectedChecksum" prefWidth="54.0" text="Copy" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <TextField fx:id="sha1sumTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="sha256sumTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="sha512sumTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="sha1sumCopyButton" mnemonicParsing="false" onAction="#copySelectedChecksum" prefWidth="54.0" text="Copy" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -78,12 +78,46 @@
             <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
          </padding>
       </GridPane>
-      <Button fx:id="fileButton" layoutX="28.0" layoutY="10.0" mnemonicParsing="false" onAction="#getFilePath" prefWidth="85.0" text="File" AnchorPane.leftAnchor="30.0" />
-      <TextField fx:id="fileTextField" editable="false" focusTraversable="false" layoutX="130.0" layoutY="10.0" mouseTransparent="true" prefHeight="25.0" prefWidth="340.0" />
-      <Button fx:id="resetButton" layoutX="176.0" layoutY="213.0" maxWidth="85.0" minWidth="85.0" mnemonicParsing="false" onAction="#resetForm" prefWidth="85.0" text="Reset" AnchorPane.leftAnchor="180.0" />
-      <Button fx:id="generateButton" layoutX="30.0" layoutY="213.0" mnemonicParsing="false" onAction="#generateSelectedChecksumValues" prefWidth="85.0" text="Generate" AnchorPane.leftAnchor="30.0" />
-      <Button fx:id="exportButton" layoutX="330.0" layoutY="213.0" mnemonicParsing="false" onAction="#exportChecksumsToFile" prefWidth="85.0" text="Export" AnchorPane.leftAnchor="330.0" />
-      <Button fx:id="exitButton" layoutX="485.0" layoutY="213.0" mnemonicParsing="false" onAction="#exitApplication" prefWidth="85.0" text="Exit" AnchorPane.rightAnchor="30.0" />
-      <Button layoutX="485.0" layoutY="10.0" mnemonicParsing="false" prefWidth="85.0" text="Check" />
+      <GridPane fx:id="gridBox1" layoutX="14.0" layoutY="14.0" prefHeight="60.0" prefWidth="670.0" style="-fx-border-color: lightgrey; -fx-border-radius: 10;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="5.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="100.0" prefWidth="106.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="437.6666564941406" minWidth="10.0" prefWidth="432.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <padding>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </padding>
+         <children>
+            <Button mnemonicParsing="false" prefWidth="85.0" text="Check" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+            <TextField fx:id="fileTextField" editable="false" focusTraversable="false" mouseTransparent="true" prefHeight="27.0" prefWidth="433.0" GridPane.columnIndex="1" />
+            <Button fx:id="fileButton" mnemonicParsing="false" onAction="#getFilePath" prefWidth="85.0" text="File" />
+         </children>
+      </GridPane>
+      <GridPane fx:id="gridBox11" layoutX="14.0" layoutY="304.0" prefHeight="60.0" prefWidth="670.0" style="-fx-border-color: lightgrey; -fx-border-radius: 10;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <padding>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </padding>
+         <children>
+            <Button fx:id="generateButton" mnemonicParsing="false" onAction="#generateSelectedChecksumValues" prefWidth="85.0" text="Generate" GridPane.halignment="CENTER" />
+            <Button fx:id="resetButton" maxWidth="85.0" minWidth="85.0" mnemonicParsing="false" onAction="#resetForm" prefWidth="85.0" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportChecksumsToFile" prefWidth="85.0" text="Export" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitApplication" prefWidth="85.0" text="Exit" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+         </children>
+      </GridPane>
    </children>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
 </AnchorPane>

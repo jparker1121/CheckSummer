@@ -22,7 +22,10 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
         
         Scene scene = new Scene(root);
-        
+
+        stage.requestFocus();
+        stage.setResizable(false);
+        stage.setTitle("checksummer");
         stage.setScene(scene);
         stage.show();
     }
