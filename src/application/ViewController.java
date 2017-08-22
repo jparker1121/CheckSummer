@@ -56,18 +56,6 @@ public class ViewController implements Initializable {
     private Button sha512sumCopyButton;
 
     @FXML
-    private RadioButton exportMd5sumRadioButton;
-
-    @FXML
-    private RadioButton exportSha1sumRadioButton;
-
-    @FXML
-    private RadioButton exportSha256sumRadioButton;
-
-    @FXML
-    private RadioButton exportSha512sumRadioButton;
-
-    @FXML
     private Button fileButton;
 
     @FXML
@@ -96,6 +84,9 @@ public class ViewController implements Initializable {
 
     @FXML
     private Button exitButton;
+
+    @FXML
+    private RadioButton formatStyleRadioButton;
 
     Model model;
 
@@ -137,21 +128,18 @@ public class ViewController implements Initializable {
     @FXML
     void exportChecksumsToFile(ActionEvent event) {
         StringBuilder builder = new StringBuilder();
+        TextField[] checksumTextFields = {
+                md5sumTextField, sha1sumTextField, sha256sumTextField, sha512sumTextField
+        };
 
-        if (exportMd5sumRadioButton.isSelected()) {
-            builder.append(md5sumTextField.getText() + "  " + model.getFile().getName() + "\n");
-        }
-
-        if (exportSha1sumRadioButton.isSelected()) {
-            builder.append(sha1sumTextField.getText() + "  " + model.getFile().getName()  + "\n");
-        }
-
-        if (exportSha256sumRadioButton.isSelected()) {
-            builder.append(sha256sumTextField.getText() + "  " + model.getFile().getName()  + "\n");
-        }
-
-        if (exportSha512sumRadioButton.isSelected()) {
-            builder.append(sha512sumTextField.getText() + "  " + model.getFile().getName()  + "\n");
+        for (TextField tf : checksumTextFields) {
+            if (!tf.getText().isEmpty()) {
+                if (formatStyleRadioButton.isSelected() && tf.getId().equals("md5sumTextField")) {
+                    builder.append("MD5 (" + model.getFile().getName() + ") = " + tf.getText() + "\n");
+                } else {
+                    builder.append(tf.getText() + "  " + model.getFile().getName() + "\n");
+                }
+            }
         }
 
         writeToFile(builder.toString());
